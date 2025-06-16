@@ -1,0 +1,22 @@
+GET http://localhost:3000/movies
+
+###
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+		"movie_key": "gridiron-gang",
+		"name": "Gridiron Gang",
+		"description": "Teenagers at a juvenile detention center, under the leadership of their counselor, gain self-esteem by playing football together.",
+		"genres": [
+			"crime",
+			"drama",
+			"sport"
+		],
+		"rate": "6.9",
+		"length": "2hr 5mins",
+		"img": "gridiron-gang.jpg"
+	}
+###
+
+DELETE http://localhost:3000/movies/6
