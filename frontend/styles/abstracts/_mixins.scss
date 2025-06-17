@@ -1,0 +1,5 @@
+@mixin translucent {
+  background-color: $translucent-bg-color;
+  stroke-width: 1/16rem;
+  stroke: $stroke-color;
+}

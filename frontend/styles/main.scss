@@ -1,0 +1,128 @@
+// styles/main.scss
+
+@import "abstracts/variables";
+@import "abstracts/mixins";
+@import "abstracts/functions";
+
+@import "base/reset";
+@import "base/typography";
+@import "base/globals";
+
+html {
+  height: 100vh;
+  background-color: $bg-color;
+  overflow: hidden;
+  font-family: $font-family;
+}
+
+$page-max-width: 1200px; // Define the maximum width for content on large screens
+
+body {
+  margin: 0;
+  margin-top: 2rem;
+  padding: 0;
+  box-sizing: border-box;
+
+  // Default styles for mobile screens (<600px)
+  padding: 0 16px;
+
+  // Medium screens (600px and above)
+  @media (min-width: 600px) {
+    padding: 0 24px;
+  }
+
+  // Large screens (1024px and above)
+  @media (min-width: 1024px) {
+    // Use clamp for smoother transitions
+    padding: 0 clamp(32px, 5vw, 64px);
+  }
+
+  // Extra large screens (1440px and above)
+  @media (min-width: 1440px) {
+    padding: 0 calc((100vw - #{$page-max-width}) / 2);
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: $secondary-color;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.main-header {
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  color: $web-title-color;
+}
+
+.header-links {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.web-title-container {
+  @include translucent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  border-radius: 1000px;
+
+  padding: 4px 12px;
+}
+
+.web-title {
+  //   color: $web-title-color;
+  font-size: 1.2rem;
+  font-family: $font-family;
+  font-weight: 300;
+}
+
+.arrow-container {
+  border-radius: 100%;
+  background-color: $primary-color;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin-bottom: 2rem;
+}
+.dotted-line {
+  width: 100%; // Full width of the container
+  height: 4px; // Height of the dotted line
+  background: repeating-linear-gradient(
+    to right,
+    rgba($primary-color, 0.15) 0,
+    rgba($primary-color, 0.15) 1rem,
+    transparent 1rem,
+    transparent 2rem
+  );
+}
+
+.orb {
+  height: 1000px;
+  width: 1000px;
+  position: absolute;
+  background-image: radial-gradient(
+    closest-side,
+    rgba($primary-color, 0.25),
+    $bg-color
+  );
+  top: -600px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+}
