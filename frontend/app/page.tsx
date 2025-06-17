@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from "react";
 import "@/styles/main.scss";
-import { ArrowDown, Clapperboard } from "lucide-react";
+import { ArrowDown, Clapperboard, Star } from "lucide-react";
+import Image from "next/image";
+import MovieCard from "@/components/MovieCard";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -13,6 +15,10 @@ export default function Home() {
       .then((data) => setMovies(data))
       .catch((error) => console.error("Error fetching movies:", error));
   }, []);
+
+  useEffect(() => {
+    console.log(movies);
+  }, [movies]);
 
   return (
     <div>
@@ -39,14 +45,24 @@ export default function Home() {
           </div>
           <div className="dotted-line" />
         </div>
-        <section></section>
-        <p>
+        <section>
+          <div className="section-header">
+            <h2>SHOWCASE</h2>
+            <div className=".btn">View All</div>
+          </div>
           {movies.map((movie, index) => (
-            <li key={movie.movie_key + index.toString()}>
-              <strong>{movie.name}</strong> - {movie.rate}/10
-            </li>
+            // <li key={movie.movie_key + index.toString()}>
+            //   <strong>{movie.name}</strong> - {movie.rate}/10
+            // </li>
+            <MovieCard
+              title={movie.name}
+              genres={movie.genres}
+              rating={movie.rate}
+              imageUrl={`/images/${movie.movie_key}.webp`}
+              key={movie.movie_key + index.toString()}
+            />
           ))}
-        </p>
+        </section>
       </main>
       <footer></footer>
     </div>
