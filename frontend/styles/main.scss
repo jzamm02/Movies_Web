@@ -43,17 +43,21 @@ body {
   }
 }
 
+header {
+  margin: 2rem auto;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 500;
   color: $secondary-color;
   text-align: center;
-  margin-top: 2rem;
+  //   margin-top: 2rem;
 }
 
 .main-header {
   max-width: 400px;
-  margin: 2rem auto;
+  margin: 0 auto;
 }
 
 .header-container {
@@ -98,7 +102,7 @@ h1 {
   justify-content: center;
   align-items: center;
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 .dotted-line {
   width: 100%;
@@ -133,7 +137,7 @@ h1 {
 
   border: 1px solid $stroke-color;
   //   height: 320px;
-  width: 200px;
+  width: $card-width;
   display: flex;
   flex-direction: column;
   gap: 0.5em;
@@ -200,23 +204,26 @@ h1 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
   h2 {
     font-size: 1rem;
     font-weight: 500;
     color: $primary-color;
     margin: 0;
   }
-}
-.btn {
-  background-color: $primary-color;
-  border: none;
-  border-radius: 100px;
-  padding: 0.4em 1em;
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1em;
-  //   font-family: Roboto, arial;
-  cursor: pointer;
+  .btn {
+    background-color: $primary-color;
+    border: none;
+    border-radius: 100px;
+    padding: 0.4em 1em;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1em;
+    //   font-family: Roboto, arial;
+    cursor: pointer;
+  }
 }
 
 .card-button {
@@ -243,4 +250,23 @@ h1 {
 }
 .card-rating-icon {
   color: $primary-color;
+}
+
+section {
+  display: grid;
+  grid-template-rows: auto auto; /* For header and content */
+  grid-template-columns: 1fr; /* Single column for alignment */
+}
+.section-header {
+  display: flex;
+  justify-content: space-between; /* Align h2 and button on edges */
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $card-width);
+  gap: 1rem;
+  //   padding: 0.5rem;
+  justify-content: space-evenly;
 }

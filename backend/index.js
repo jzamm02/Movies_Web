@@ -14,7 +14,7 @@ app.use(cors());
 //   next();
 // });
 
-app.get("/movies", async (req, res) => {
+app.get("/api/movies", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM movies");
     res.json(result.rows);
@@ -25,7 +25,7 @@ app.get("/movies", async (req, res) => {
 });
 
 // add a movie to movies
-app.post("/movies", async (req, res) => {
+app.post("/api/movies", async (req, res) => {
   console.log("Received request to add movie:", req.body);
   try {
     const { movie_key, name, description, genres, rate, length, img } =
@@ -41,8 +41,28 @@ app.post("/movies", async (req, res) => {
   }
 });
 
+// get movie by id
+
+app.get("/api/movies/:id", async (req, res) => {
+  console.log("Get route hit with ID:", req.params.id);
+  try {
+    const { id } = req.params;
+    const result = await pool.query(
+      "SELECT id, movie_key, name, description, genres, rate, length FROM movies WHERE id = $1",
+      [id]
+    );
+    if (result.rows.length === 0) {
+      return res.status(404).send("Movie not found");
+    }
+    res.json(result.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+});
+
 // delete movie
-app.delete("/movies/:id", async (req, res) => {
+app.delete("/api/movies/:id", async (req, res) => {
   console.log("DELETE route hit with ID:", req.params.id);
   try {
     const { id } = req.params;

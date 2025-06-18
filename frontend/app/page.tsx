@@ -5,12 +5,13 @@ import "@/styles/main.scss";
 import { ArrowDown, Clapperboard, Star } from "lucide-react";
 import Image from "next/image";
 import MovieCard from "@/components/MovieCard";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/movies")
+    fetch("http://localhost:3000/api/movies")
       .then((response) => response.json())
       .then((data) => setMovies(data))
       .catch((error) => console.error("Error fetching movies:", error));
@@ -23,18 +24,7 @@ export default function Home() {
   return (
     <div>
       <div className="orb" />
-      <header>
-        <div className="header-container">
-          <div className="web-title-container">
-            <Clapperboard size={18} strokeWidth={2} />
-            <p className="web-title">Movie Collection</p>
-          </div>
-          <div className="header-links">
-            <p>About</p>
-            <p>Contact</p>
-          </div>
-        </div>
-      </header>
+      <Header />
       <main>
         <div>
           <h1 className="main-header">
@@ -48,20 +38,25 @@ export default function Home() {
         <section>
           <div className="section-header">
             <h2>SHOWCASE</h2>
-            <div className=".btn">View All</div>
+            <div>
+              <button className="btn">View All</button>
+            </div>
           </div>
-          {movies.map((movie, index) => (
-            // <li key={movie.movie_key + index.toString()}>
-            //   <strong>{movie.name}</strong> - {movie.rate}/10
-            // </li>
-            <MovieCard
-              title={movie.name}
-              genres={movie.genres}
-              rating={movie.rate}
-              imageUrl={`/images/${movie.movie_key}.webp`}
-              key={movie.movie_key + index.toString()}
-            />
-          ))}
+          <div className="grid-container">
+            {movies.map((movie, index) => (
+              // <li key={movie.movie_key + index.toString()}>
+              //   <strong>{movie.name}</strong> - {movie.rate}/10
+              // </li>
+              <MovieCard
+                id={movie.id}
+                title={movie.name}
+                genres={movie.genres}
+                rating={movie.rate}
+                imageUrl={`/images/${movie.movie_key}.webp`}
+                key={movie.movie_key + index.toString()}
+              />
+            ))}
+          </div>
         </section>
       </main>
       <footer></footer>

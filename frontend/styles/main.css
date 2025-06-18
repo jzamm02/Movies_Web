@@ -41,17 +41,20 @@ body {
   }
 }
 
+header {
+  margin: 2rem auto;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 500;
   color: white;
   text-align: center;
-  margin-top: 2rem;
 }
 
 .main-header {
   max-width: 400px;
-  margin: 2rem auto;
+  margin: 0 auto;
 }
 
 .header-container {
@@ -125,7 +128,7 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 }
 
 .dotted-line {
@@ -231,6 +234,11 @@ h1 {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 
 .section-header h2 {
@@ -240,7 +248,7 @@ h1 {
   margin: 0;
 }
 
-.btn {
+.section-header .btn {
   background-color: #f4ce03;
   border: none;
   border-radius: 100px;
@@ -281,5 +289,38 @@ h1 {
 
 .card-rating-icon {
   color: #f4ce03;
+}
+
+section {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-rows: auto auto;
+      grid-template-rows: auto auto;
+  /* For header and content */
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  /* Single column for alignment */
+}
+
+.section-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  /* Align h2 and button on edges */
+  width: 100%;
+}
+
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (200px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 200px);
+  gap: 1rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
 /*# sourceMappingURL=main.css.map */
