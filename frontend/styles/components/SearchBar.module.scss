@@ -1,0 +1,31 @@
+.search-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba($primary-color, 0.5);
+  border-radius: 100px;
+  padding: 8px;
+  background-color: transparent;
+  gap: 8px;
+  cursor: text;
+
+  &:hover {
+    border-color: rgba($primary-color, 0.8); // Optional hover effect
+  }
+
+  .search-icon {
+    color: rgba($primary-color, 0.5); // Use primary color for the icon
+  }
+
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: rgba($primary-color, 1);
+
+    &::placeholder {
+      color: rgba($primary-color, 0.5); // Style for the placeholder text
+    }
+  }
+}

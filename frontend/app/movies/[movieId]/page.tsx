@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import styles from "../../../styles/pages/MovieDetails.module.scss";
 import Header from "@/components/Header";
 import { PlayIcon, Star } from "lucide-react";
+import Link from "next/link";
 
 const MovieDetails = () => {
   const { movieId } = useParams(); // Get the dynamic ID from the route
@@ -90,9 +91,20 @@ const MovieDetails = () => {
 
               <div className={`${styles["details-rating"]}`}>
                 <Star size={16} />
-                <p>{movie.rate}</p>
+                <p>{movie.rate}/10.0</p>
               </div>
             </div>
+          </div>
+          <div>
+            <h2 className={`${styles["description-title"]}`}>Description</h2>
+            <p className={`${styles["description-text"]}`}>
+              {movie.description || "No description available for this movie."}
+            </p>
+          </div>
+          <div className={`${styles["button-container"]}`}>
+            <Link href="/">
+              <button className="card-button ">Back to home</button>
+            </Link>
           </div>
         </>
       )}

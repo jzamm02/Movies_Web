@@ -1,14 +1,16 @@
 .container {
   display: flex;
-  border: red 1px solid;
+  //   border: red 1px solid;
   gap: 2rem;
 }
 
 .container-details {
-  border: blue 1px solid;
+  //   border: blue 1px solid;
   display: flex;
   flex-direction: column;
+  //   width: 100%;
   gap: 1rem;
+  //   border: red 1px solid;
 }
 
 .details-title {
@@ -16,6 +18,12 @@
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
   align-self: flex-start;
+  //   border: red 1px solid;
+  display: flex;
+  //   width: 100%;
+  text-align: left; /* Ensure the text aligns to the left */
+  //   white-space: normal; /* Allow wrapping of text */
+  //   word-wrap: break-word; /* Handle long unbroken words */
 }
 
 .details-length {
@@ -41,4 +49,28 @@
   border: $stroke-color 1px solid;
   color: rgba(255, 255, 255, 1);
   margin-right: 0.5rem;
+}
+
+.description-title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.description-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 1);
+  line-height: 1.5rem;
+  font-weight: 300;
+}
+
+.button-container {
+  display: flex;
+  //   flex-direction: row;
+  //   gap: 1rem;
+  margin: 1.5rem auto;
+  //   border: red 1px solid;
+  justify-content: center;
 }

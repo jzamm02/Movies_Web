@@ -24,35 +24,64 @@ const MovieCard: React.FC<MovieCardProps> = ({
   return (
     <div className="card-container">
       <div className="card-image-container">
-        <Image
-          src={imageUrl}
-          alt={`${title} Poster`}
-          width={180}
-          height={260}
-          className="card-image"
-        />
         {!individual ? (
+          <Link href={`/movies/${id}`}>
+            <Image
+              src={imageUrl}
+              alt={`${title} Poster`}
+              width={180}
+              height={260}
+              className={"card-image"}
+            />
+            {!individual ? (
+              <>
+                <div className="gradient-overlay"></div>
+                <div className="overlay-content">
+                  <h3>{title}</h3>
+                  <p>
+                    {genres.map((genre, index) => (
+                      <span key={index}>
+                        {genre}
+                        {index < genres.length - 1 && ", "}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              </>
+            ) : null}
+          </Link>
+        ) : (
           <>
-            <div className="gradient-overlay"></div>
-            <div className="overlay-content">
-              <h3>{title}</h3>
-              <p>
-                {genres.map((genre, index) => (
-                  <span key={index}>
-                    {genre}
-                    {index < genres.length - 1 && ", "}
-                  </span>
-                ))}
-              </p>
-            </div>
+            <Image
+              src={imageUrl}
+              alt={`${title} Poster`}
+              width={180}
+              height={260}
+              className={"card-image"}
+            />
+            {!individual ? (
+              <>
+                <div className="gradient-overlay"></div>
+                <div className="overlay-content">
+                  <h3>{title}</h3>
+                  <p>
+                    {genres.map((genre, index) => (
+                      <span key={index}>
+                        {genre}
+                        {index < genres.length - 1 && ", "}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              </>
+            ) : null}
           </>
-        ) : null}
+        )}
       </div>
       {!individual ? (
         <>
-          <Link href={`/movies/${id}`}>
-            <div className="card-button">Learn More</div>
-          </Link>
+          <div className="card-button">Learn More</div>
+
           <div className="card-rating">
             <p className="card-rating-value">{rating}</p>
             <Star size={16} className="card-rating-icon" />

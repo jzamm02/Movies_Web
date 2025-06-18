@@ -42,7 +42,7 @@ body {
 }
 
 header {
-  margin: 2rem auto;
+  margin: 2rem auto 3rem auto;
 }
 
 h1 {
@@ -116,9 +116,9 @@ h1 {
 .arrow-container {
   border-radius: 100%;
   background-color: #f4ce03;
-  width: 50px;
-  height: 50px;
-  margin: 0 auto;
+  width: 64px;
+  height: 64px;
+  margin: 3rem auto;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -128,7 +128,6 @@ h1 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-bottom: 3rem;
 }
 
 .dotted-line {
@@ -153,7 +152,6 @@ h1 {
   background-color: rgba(197, 197, 197, 0.18);
   border-radius: 12px;
   border: 1px solid #575757;
-  width: 200px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -165,20 +163,16 @@ h1 {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0.5em 0 0.5em 0;
+  padding: 0.5em;
 }
 
 .card-image-container {
   position: relative;
-  width: 180px;
-  height: 260px;
   border-radius: 12px;
   overflow: hidden;
 }
 
 .card-image-container .card-image {
-  width: 100%;
-  height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -322,5 +316,38 @@ section {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+}
+
+.input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.input-box {
+  padding: "8px";
+}
+
+input::-webkit-input-placeholder {
+  color: #f4ce03;
+}
+
+input:-ms-input-placeholder {
+  color: #f4ce03;
+}
+
+input::-ms-input-placeholder {
+  color: #f4ce03;
+}
+
+input::placeholder {
+  color: #f4ce03;
 }
 /*# sourceMappingURL=main.css.map */
