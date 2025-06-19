@@ -247,7 +247,7 @@ h1 {
   border: none;
   border-radius: 100px;
   padding: 0.4em 1em;
-  font-size: 0.9rem;
+  font-size: 1em;
   font-weight: 500;
   line-height: 1em;
   cursor: pointer;
@@ -349,5 +349,24 @@ input::-ms-input-placeholder {
 
 input::placeholder {
   color: #f4ce03;
+}
+
+.filter-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #f4ce03;
+  border: none;
+  border-radius: 100px;
+  padding: 0.4em 1em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 0 auto;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

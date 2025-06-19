@@ -1,17 +1,26 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import "@/styles/main.scss";
-import { ArrowDown, Clapperboard, Search, Star } from "lucide-react";
+import {
+  ArrowDown,
+  ChevronDown,
+  Clapperboard,
+  Search,
+  Star,
+} from "lucide-react";
 import Image from "next/image";
 import MovieCard from "@/components/MovieCard";
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
+import Dropdown from "@/components/DropdownMenu";
+import { Button } from "@/components/Button";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
-
+  const [currentGenres, setCurrentGenres] = useState<string[]>([]);
+  const [isShown, setIsShown] = useState(false);
   useEffect(() => {
     fetch("http://localhost:3000/api/movies")
       .then((response) => response.json())
@@ -23,11 +32,38 @@ export default function Home() {
     console.log(movies);
   }, [movies]);
 
-  const filteredMovies = movies.filter((movie) =>
-    query === ""
-      ? movie
-      : movie.name.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredMovies = movies.filter((movie) => {
+    // Filter by genres if any are selected
+    if (currentGenres.length > 0) {
+      return currentGenres.every((genre) => movie.genres.includes(genre));
+    }
+    // Fallback to query filter if no genres are selected
+    return (
+      query === "" || movie.name.toLowerCase().includes(query.toLowerCase())
+    );
+  });
+
+  useEffect(() => {
+    setQuery("");
+  }, [currentGenres]);
+
+  const uniqueGenres = useMemo(() => {
+    return Array.from(new Set(movies.flatMap((movie) => movie.genres)));
+  }, [movies]);
+
+  const handleGenreSelect = (genre) => {
+    console.log("Selected Genre:", genre);
+    if (currentGenres.includes(genre)) {
+      setCurrentGenres(currentGenres.filter((g) => g !== genre));
+    } else {
+      setCurrentGenres([...currentGenres, genre]);
+    }
+    console.log("Current Genres:", currentGenres);
+  };
+
+  const showAllMovies = () => {
+    setIsShown(true);
+  };
 
   return (
     <div>
@@ -46,12 +82,20 @@ export default function Home() {
         <section>
           <div className="section-header">
             <h2>SHOWCASE</h2>
-            <SearchBar query={query} setQuery={setQuery} />
-
-            <div>
-              <button className="btn">View All</button>
-            </div>
+            {isShown ? (
+              <>
+                <SearchBar query={query} setQuery={setQuery} />
+                <Dropdown options={uniqueGenres} onSelect={handleGenreSelect} />
+              </>
+            ) : null}
+            {isShown ? null : (
+              <div className="btn" onClick={showAllMovies}>
+                View All
+              </div>
+            )}
           </div>
+
+          <p>{currentGenres}</p>
           <div className="grid-container">
             {filteredMovies.map((movie, index) => (
               // <li key={movie.movie_key + index.toString()}>

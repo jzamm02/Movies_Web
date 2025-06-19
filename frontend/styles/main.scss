@@ -215,7 +215,7 @@ h1 {
     border: none;
     border-radius: 100px;
     padding: 0.4em 1em;
-    font-size: 0.9rem;
+    font-size: 1em;
     font-weight: 500;
     line-height: 1em;
     //   font-family: Roboto, arial;
@@ -289,4 +289,19 @@ section {
 
 input::placeholder {
   color: $primary-color;
+}
+
+.filter-container {
+  display: flex;
+  flex-direction: row;
+  background-color: $primary-color;
+  border: none;
+  border-radius: 100px;
+  padding: 0.4em 1em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 0 auto;
+  //   font-family: Roboto, arial;
+  cursor: pointer;
 }
