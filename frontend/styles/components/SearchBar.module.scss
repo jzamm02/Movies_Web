@@ -1,12 +1,14 @@
 .search-container {
   display: flex;
   align-items: center;
+  //   justify-content: center;
   border: 1px solid rgba($primary-color, 0.5);
   border-radius: 100px;
-  padding: 8px;
+  padding: 0px 8px;
   background-color: transparent;
   gap: 8px;
   cursor: text;
+  //   border: red 1px solid; // Temporary for debugging
 
   &:hover {
     border-color: rgba($primary-color, 0.8); // Optional hover effect

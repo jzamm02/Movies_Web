@@ -41,7 +41,8 @@ const MovieCard: React.FC<MovieCardProps> = ({
                   <p>
                     {genres.map((genre, index) => (
                       <span key={index}>
-                        {genre}
+                        {genre.charAt(0).toUpperCase() + genre.slice(1)}
+
                         {index < genres.length - 1 && ", "}
                       </span>
                     ))}
@@ -80,7 +81,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
       </div>
       {!individual ? (
         <>
-          <div className="card-button">Learn More</div>
+          <div className="btn">Learn More</div>
 
           <div className="card-rating">
             <p className="card-rating-value">{rating}</p>

@@ -1,22 +1,24 @@
-GET http://localhost:3000/movies
+GET http://localhost:3000/api/movies
 
 ###
-POST http://localhost:3000/movies
+POST http://localhost:3000/api/movies
 Content-Type: application/json
 
 {
-		"movie_key": "gridiron-gang",
-		"name": "Gridiron Gang",
-		"description": "Teenagers at a juvenile detention center, under the leadership of their counselor, gain self-esteem by playing football together.",
-		"genres": [
-			"crime",
-			"drama",
-			"sport"
-		],
-		"rate": "6.9",
-		"length": "2hr 5mins",
-		"img": "gridiron-gang.jpg"
-	}
+
+  "movie_key": "spectre",
+  "name": "Spectre",
+  "description": "In Spectre, James Bond is drawn into a complex and dangerous conspiracy that threatens not only his own life but also the very foundation of the British intelligence community. Following a cryptic message from his mysterious past, Bond embarks on a globe-trotting mission that takes him through the vibrant streets of Rome, the vast deserts of Morocco, and the icy landscapes of the Austrian Alps. As he follows the trail, Bond uncovers the existence of a secretive and powerful organization known as SPECTRE, whose influence reaches deep into global affairs. \n\nMeanwhile, back in London, M faces increasing pressure from political forces eager to disband the Secret Intelligence Service, putting the future of MI6 in jeopardy. With the agency’s survival hanging by a thread, Bond races against time to expose the shadowy figures behind SPECTRE’s operations. Along the way, he confronts old enemies and uncovers personal betrayals that shake his sense of trust and duty. ",
+  "genres": [
+    "action",
+    "adventure",
+    "thriller"
+  ],
+  "rate": "6.9",
+  "length": "2hr 28mins",
+  "img": "spectre.jpg"
+}
+
 ###
 
-DELETE http://localhost:3000/movies/6
+DELETE http://localhost:3000/api/movies/8

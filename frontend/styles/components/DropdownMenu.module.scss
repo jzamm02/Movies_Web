@@ -33,13 +33,27 @@
   overflow: hidden;
 }
 
-.dropdown-item {
+.dropdown-item-inactive {
   padding: 8px 10px;
   cursor: pointer;
   transition: background-color 0.2s;
 
   &:hover {
     background-color: $primary-color;
+    overflow: hidden;
+  }
+}
+
+.dropdown-item-active {
+  padding: 8px 10px;
+  cursor: pointer;
+  background-color: $primary-color;
+  //   color: rgba(255, 255, 255, 1);
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    // color: $primary-color;
     overflow: hidden;
   }
 }

@@ -1,13 +1,18 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import styles from "../styles/components/DropdownMenu.module.scss";
 import { ChevronDown } from "lucide-react";
 
 interface DropdownProps {
   options: string[];
   onSelect: (option: string) => void;
+  activeOptions?: string[];
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+  options,
+  onSelect,
+  activeOptions,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -36,6 +41,10 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
     };
   }, []);
 
+  useEffect(() => {
+    console.log("Active Options:", activeOptions);
+  }, [activeOptions]);
+
   return (
     <div className={styles["dropdown-container"]} ref={dropdownRef}>
       <div className={styles["dropdown-header"]} onClick={toggleDropdown}>
@@ -47,10 +56,14 @@ const Dropdown: React.FC<DropdownProps> = ({ options, onSelect }) => {
           {options.map((option, index) => (
             <li
               key={index}
-              className={styles["dropdown-item"]}
+              className={
+                activeOptions?.includes(option)
+                  ? styles["dropdown-item-active"]
+                  : styles["dropdown-item-inactive"]
+              }
               onClick={() => handleSelect(option)}
             >
-              {option}
+              {option.charAt(0).toUpperCase() + option.slice(1)}
             </li>
           ))}
         </ul>

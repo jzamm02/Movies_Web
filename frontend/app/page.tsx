@@ -14,18 +14,21 @@ import MovieCard from "@/components/MovieCard";
 import Header from "@/components/Header";
 import SearchBar from "@/components/SearchBar";
 import Dropdown from "@/components/DropdownMenu";
-import { Button } from "@/components/Button";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState("");
   const [currentGenres, setCurrentGenres] = useState<string[]>([]);
   const [isShown, setIsShown] = useState(false);
+  const [allowScroll, setAllowScroll] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetch("http://localhost:3000/api/movies")
       .then((response) => response.json())
       .then((data) => setMovies(data))
-      .catch((error) => console.error("Error fetching movies:", error));
+      .catch((error) => console.error("Error fetching movies:", error))
+      .finally(() => setIsLoading(false));
   }, []);
 
   useEffect(() => {
@@ -33,11 +36,14 @@ export default function Home() {
   }, [movies]);
 
   const filteredMovies = movies.filter((movie) => {
-    // Filter by genres if any are selected
+    // If genres are selected, filter by genres and query
     if (currentGenres.length > 0) {
-      return currentGenres.every((genre) => movie.genres.includes(genre));
+      return (
+        currentGenres.every((genre) => movie.genres.includes(genre)) &&
+        movie.name.toLowerCase().includes(query.toLowerCase())
+      );
     }
-    // Fallback to query filter if no genres are selected
+    // If no genres are selected, fallback to query filter
     return (
       query === "" || movie.name.toLowerCase().includes(query.toLowerCase())
     );
@@ -63,10 +69,12 @@ export default function Home() {
 
   const showAllMovies = () => {
     setIsShown(true);
+    setAllowScroll(true);
   };
 
   return (
-    <div>
+    <div className={allowScroll ? "" : "no-scroll"}>
+      {allowScroll ? null : <div className="locked-shadow-overlay" />}
       <div className="orb" />
       <Header />
       <main>
@@ -84,8 +92,14 @@ export default function Home() {
             <h2>SHOWCASE</h2>
             {isShown ? (
               <>
-                <SearchBar query={query} setQuery={setQuery} />
-                <Dropdown options={uniqueGenres} onSelect={handleGenreSelect} />
+                <div className="search-menu-container">
+                  <SearchBar query={query} setQuery={setQuery} />
+                  <Dropdown
+                    options={uniqueGenres}
+                    onSelect={handleGenreSelect}
+                    activeOptions={currentGenres}
+                  />
+                </div>
               </>
             ) : null}
             {isShown ? null : (
@@ -94,26 +108,40 @@ export default function Home() {
               </div>
             )}
           </div>
+          {isLoading ? (
+            <div className="spinner-container">
+              <div className="loader" />
+            </div>
+          ) : null}
 
-          <p>{currentGenres}</p>
-          <div className="grid-container">
-            {filteredMovies.map((movie, index) => (
-              // <li key={movie.movie_key + index.toString()}>
-              //   <strong>{movie.name}</strong> - {movie.rate}/10
-              // </li>
-              <MovieCard
-                id={movie.id}
-                title={movie.name}
-                genres={movie.genres}
-                rating={movie.rate}
-                imageUrl={`/images/${movie.movie_key}.webp`}
-                key={movie.movie_key + index.toString()}
-              />
+          <div className="genre-container">
+            {currentGenres.map((genre, index) => (
+              <p key={index + genre} className="genre-tag">
+                {genre.charAt(0).toUpperCase() + genre.slice(1)}
+              </p>
             ))}
           </div>
+          {filteredMovies.length > 0 ? (
+            <div className="grid-container">
+              {filteredMovies.map((movie, index) => (
+                <MovieCard
+                  id={movie.id}
+                  title={movie.name}
+                  genres={movie.genres}
+                  rating={movie.rate}
+                  imageUrl={`/images/${movie.movie_key}.webp`}
+                  key={movie.movie_key + index.toString()}
+                />
+              ))}
+            </div>
+          ) : isLoading ? null : (
+            <div className="not-found-container">
+              <p className="not-found">No movies found...</p>
+            </div>
+          )}
         </section>
       </main>
-      <footer></footer>
+      {isLoading ? null : <Footer />}
     </div>
   );
 }
