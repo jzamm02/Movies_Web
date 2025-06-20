@@ -1,3 +1,5 @@
+@import "abstracts/variables";
+
 .content-container {
   display: flex;
   flex-direction: column;
@@ -80,4 +82,21 @@
   margin: 1.5rem auto;
   //   border: red 1px solid;
   justify-content: center;
+}
+
+//anims
+
+.fade-container {
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }

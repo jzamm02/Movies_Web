@@ -2,19 +2,12 @@
 
 import { useEffect, useMemo, useState } from "react";
 import "@/styles/main.scss";
-import {
-  ArrowDown,
-  ChevronDown,
-  Clapperboard,
-  Search,
-  Star,
-} from "lucide-react";
-import Image from "next/image";
-import MovieCard from "@/components/MovieCard";
 import Header from "@/components/Header";
-import SearchBar from "@/components/SearchBar";
-import Dropdown from "@/components/DropdownMenu";
 import Footer from "@/components/Footer";
+import ShadowOverlay from "@/components/Dashboard/ShadowOverlay";
+import HeroSection from "@/components/Dashboard/HeroSection";
+import MovieSectionHeader from "@/components/Dashboard/MovieSectionHeader";
+import MovieGridSection from "@/components/Dashboard/MovieGridSection";
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -23,6 +16,7 @@ export default function Home() {
   const [isShown, setIsShown] = useState(false);
   const [allowScroll, setAllowScroll] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     fetch("http://localhost:3000/api/movies")
       .then((response) => response.json())
@@ -74,40 +68,21 @@ export default function Home() {
 
   return (
     <div className={allowScroll ? "" : "no-scroll"}>
-      {allowScroll ? null : <div className="locked-shadow-overlay" />}
+      <ShadowOverlay allowScroll={allowScroll} />
       <div className="orb" />
       <Header />
       <main>
-        <div>
-          <h1 className="main-header">
-            Explore a collection of top movies and classics
-          </h1>
-          <div className="arrow-container">
-            <ArrowDown size={44} />
-          </div>
-          <div className="dotted-line" />
-        </div>
+        <HeroSection />
         <section>
-          <div className="section-header">
-            <h2>SHOWCASE</h2>
-            {isShown ? (
-              <>
-                <div className="search-menu-container">
-                  <SearchBar query={query} setQuery={setQuery} />
-                  <Dropdown
-                    options={uniqueGenres}
-                    onSelect={handleGenreSelect}
-                    activeOptions={currentGenres}
-                  />
-                </div>
-              </>
-            ) : null}
-            {isShown ? null : (
-              <div className="btn" onClick={showAllMovies}>
-                View All
-              </div>
-            )}
-          </div>
+          <MovieSectionHeader
+            isShown={isShown}
+            query={query}
+            setQuery={setQuery}
+            currentGenres={currentGenres}
+            uniqueGenres={uniqueGenres}
+            handleGenreSelect={handleGenreSelect}
+            showAllMovies={showAllMovies}
+          />
           {isLoading ? (
             <div className="spinner-container">
               <div className="loader" />
@@ -121,24 +96,10 @@ export default function Home() {
               </p>
             ))}
           </div>
-          {filteredMovies.length > 0 ? (
-            <div className="grid-container">
-              {filteredMovies.map((movie, index) => (
-                <MovieCard
-                  id={movie.id}
-                  title={movie.name}
-                  genres={movie.genres}
-                  rating={movie.rate}
-                  imageUrl={`/images/${movie.movie_key}.webp`}
-                  key={movie.movie_key + index.toString()}
-                />
-              ))}
-            </div>
-          ) : isLoading ? null : (
-            <div className="not-found-container">
-              <p className="not-found">No movies found...</p>
-            </div>
-          )}
+          <MovieGridSection
+            filteredMovies={filteredMovies}
+            isLoading={isLoading}
+          />
         </section>
       </main>
       {isLoading ? null : <Footer />}

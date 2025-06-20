@@ -5,15 +5,20 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(244, 206, 3, 0.5);
   border-radius: 100px;
-  padding: 8px;
+  padding: 0px 8px;
   background-color: transparent;
+  gap: 8px;
   cursor: text;
 }
 
 .search-container:hover {
-  border-color: #aaa;
+  border-color: rgba(244, 206, 3, 0.8);
+}
+
+.search-container .search-icon {
+  color: rgba(244, 206, 3, 0.5);
 }
 
 .search-container .search-input {
@@ -24,22 +29,22 @@
   outline: none;
   background-color: transparent;
   font-size: 16px;
-  color: #333;
+  color: #f4ce03;
 }
 
 .search-container .search-input::-webkit-input-placeholder {
-  color: #aaa;
+  color: rgba(244, 206, 3, 0.5);
 }
 
 .search-container .search-input:-ms-input-placeholder {
-  color: #aaa;
+  color: rgba(244, 206, 3, 0.5);
 }
 
 .search-container .search-input::-ms-input-placeholder {
-  color: #aaa;
+  color: rgba(244, 206, 3, 0.5);
 }
 
 .search-container .search-input::placeholder {
-  color: #aaa;
+  color: rgba(244, 206, 3, 0.5);
 }
 /*# sourceMappingURL=SearchBar.module.css.map */

@@ -1,5 +1,5 @@
 import React, { use, useEffect, useRef, useState } from "react";
-import styles from "../styles/components/DropdownMenu.module.scss";
+import styles from "../../styles/components/DropdownMenu.module.scss";
 import { ChevronDown } from "lucide-react";
 
 interface DropdownProps {

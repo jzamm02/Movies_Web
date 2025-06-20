@@ -4,9 +4,9 @@
 }
 
 .dropdown-header {
-  padding: 4px 12px;
+  padding: 0.4em 0.8em;
   border-radius: 100px;
-  background-color: #fff;
+  background-color: #f4ce03;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -29,24 +29,37 @@
   left: 0;
   width: 100%;
   margin: 0;
-  padding: 10px 0;
   list-style: none;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 16px;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 10;
+  overflow: hidden;
 }
 
-.dropdown-item {
+.dropdown-item-inactive {
   padding: 8px 10px;
   cursor: pointer;
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
 
-.dropdown-item:hover {
-  background-color: #f1f1f1;
+.dropdown-item-inactive:hover {
+  background-color: #f4ce03;
+  overflow: hidden;
+}
+
+.dropdown-item-active {
+  padding: 8px 10px;
+  cursor: pointer;
+  background-color: #f4ce03;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+}
+
+.dropdown-item-active:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  overflow: hidden;
 }
 /*# sourceMappingURL=DropdownMenu.module.css.map */

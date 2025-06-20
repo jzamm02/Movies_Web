@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAC;EACd,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,IAAI;EAChB,aAAa,EAAE,IAAI;CASpB;;AAfD,AASE,eATa,CASb,EAAE,CAAC;EACD,SAAS,EAAE,IAAI;EACf,WAAW,EAAE,GAAG;EAChB,KAAK,ECbO,OAAoB;EDchC,MAAM,EAAE,CAAC;CACV;;AAGH,AAAA,sBAAsB,CAAC;EACrB,OAAO,EAAE,IAAI;EACb,GAAG,EAAE,IAAI;CAEV",
+    "sources": [
+        "MovieSectionHeader.module.scss",
+        "../abstracts/_variables.scss"
+    ],
+    "names": [],
+    "file": "MovieSectionHeader.module.css"
+}

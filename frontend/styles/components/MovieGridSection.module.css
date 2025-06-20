@@ -1,0 +1,31 @@
+.grid-container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (200px)[auto-fill];
+      grid-template-columns: repeat(auto-fill, 200px);
+  gap: 2rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.not-found-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.not-found {
+  color: rgba(244, 206, 3, 0.8);
+  font-weight: 300;
+  margin-top: 1rem;
+}
+/*# sourceMappingURL=MovieGridSection.module.css.map */

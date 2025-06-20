@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,YAAY,CAAC;EACX,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,MAAM;CACf;;AAED,AAAA,gBAAgB,CAAC;EACf,aAAa,EAAE,IAAI;EACnB,gBAAgB,ECPF,OAAoB;EDQlC,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,MAAM,EAAE,SAAS;EACjB,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,IAAI;CACd;;AAED,AAAA,YAAY,CAAC;EACX,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,GAAG;EACX,UAAU,EAAE,gIAMX;CACF",
+    "sources": [
+        "HeroSection.module.scss",
+        "../abstracts/_variables.scss"
+    ],
+    "names": [],
+    "file": "HeroSection.module.css"
+}
