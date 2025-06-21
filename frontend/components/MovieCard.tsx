@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import Link from "next/link";
 import { motion } from "motion/react";
+import styles from "../styles/components/MovieCard.module.scss";
 
 interface MovieCardProps {
   id: number;
@@ -31,11 +32,11 @@ const MovieCard: React.FC<MovieCardProps> = ({
     <motion.div
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
-      className="card-container"
+      className={styles["card-container"]}
       aria-label={`Movie card for ${title}`}
       role="group"
     >
-      <div className="card-image-container">
+      <div className={styles["card-image-container"]}>
         {!individual ? (
           <Link
             href={`/movies/${id}`}
@@ -46,13 +47,13 @@ const MovieCard: React.FC<MovieCardProps> = ({
               alt={`${title} Poster`}
               width={180}
               height={260}
-              className={"card-image"}
+              className={styles["card-image"]}
               aria-describedby={`genres-${id} rating-${id}`}
             />
 
             <>
-              <div className="gradient-overlay" aria-hidden="true" />
-              <div className="overlay-content">
+              <div className={styles["gradient-overlay"]} aria-hidden="true" />
+              <div className={styles["overlay-content"]}>
                 <h3>{title}</h3>
                 <p id={`genres-${id}`} aria-label={`Genres: ${genreText}`}>
                   {genres.map((genre, index) => (
@@ -73,7 +74,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
               alt={`${title} Poster`}
               width={180}
               height={260}
-              className={"card-image"}
+              className={styles["card-image"]}
               aria-describedby={`genres-${id} rating-${id}`}
             />
           </>
@@ -83,7 +84,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
         <>
           <Link
             href={`/movies/${id}`}
-            className="card-title-link"
+            className={styles["card-title-link"]}
             tabIndex={isShown ? 0 : undefined}
           >
             <div
@@ -96,12 +97,16 @@ const MovieCard: React.FC<MovieCardProps> = ({
           </Link>
 
           <div
-            className="card-rating"
+            className={styles["card-rating"]}
             aria-label={`Rating: ${rating} out of 10`}
             id={`rating-${id}`}
           >
-            <p className="card-rating-value">{rating}</p>
-            <Star size={16} className="card-rating-icon" aria-hidden />
+            <p className={styles["card-rating-value"]}>{rating}</p>
+            <Star
+              size={16}
+              className={styles["card-rating-icon"]}
+              aria-hidden
+            />
           </div>
         </>
       ) : null}

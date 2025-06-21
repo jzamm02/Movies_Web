@@ -48,6 +48,8 @@
 
 .details-genre-container {
   gap: 1rem;
+  flex-wrap: wrap;
+  display: flex;
 }
 
 .details-genre {

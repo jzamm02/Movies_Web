@@ -50,7 +50,7 @@ const MovieSectionHeader: React.FC<MovieSectionHeaderProps> = ({
         ) : null}
       </AnimatePresence>
       {isShown ? null : (
-        <div className="">
+        <div>
           <div
             className="btn btn-shimmer"
             onClick={showAllMovies}

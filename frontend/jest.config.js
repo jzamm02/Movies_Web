@@ -12,7 +12,13 @@ const customJestConfig = {
     "^@/(.*)$": "<rootDir>/$1",
     "\\.(css|scss)$": "identity-obj-proxy",
   },
-  transformIgnorePatterns: ["/node_modules/"],
+  testMatch: [
+    "**/app/**/*.test.{ts,tsx,js,jsx}", // run tests in app folder only
+  ],
+  testPathIgnorePatterns: [
+    "/node_modules/",
+    "/playwright/", // add the folder where Playwright tests live
+  ],
 };
 
 module.exports = createJestConfig(customJestConfig);

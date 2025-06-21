@@ -1,5 +1,3 @@
-import { Clapperboard } from "lucide-react";
-
 const Footer = () => {
   return (
     <>

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, waitFor, fireEvent } from "@testing-library/react";
 import Home from "./page";
-import { img } from "motion/react-client";
+import { act } from "@testing-library/react";
 import Header from "@/components/Header";
 
 jest.useFakeTimers();
@@ -131,7 +131,9 @@ describe("Header", () => {
     expect(screen.getByRole("alert")).toBeInTheDocument();
 
     // Advance timers past the 3s timeout and 0.4s animation
-    jest.advanceTimersByTime(3400);
+    await act(async () => {
+      jest.advanceTimersByTime(3400); // or 400, or 3000, wherever needed
+    });
 
     await waitFor(() =>
       expect(screen.queryByRole("alert")).not.toBeInTheDocument()
@@ -147,13 +149,13 @@ describe("Header", () => {
     expect(screen.getByRole("alert")).toBeInTheDocument();
 
     fireEvent.click(contactButton); // Reset logic while toast is still showing
-
-    jest.advanceTimersByTime(400); // Simulate the 400ms exit transition reset
-
+    await act(async () => {
+      jest.advanceTimersByTime(400); // Simulate the 400ms exit transition reset
+    });
     expect(screen.getByRole("alert")).toBeInTheDocument(); // Toast should still be showing
-
-    jest.advanceTimersByTime(3000); // Now advance past the new 3s timer
-
+    await act(async () => {
+      jest.advanceTimersByTime(3000); // Now advance past the new 3s timer
+    });
     await waitFor(() =>
       expect(
         screen.queryByRole("alert", { name: /notification toast/i })

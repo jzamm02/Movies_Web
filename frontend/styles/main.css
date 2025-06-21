@@ -172,6 +172,12 @@ p span {
   font-weight: 300;
 }
 
+@media (max-width: 400px) {
+  .web-title {
+    font-size: 1rem;
+  }
+}
+
 .orb {
   width: 80vw;
   height: 80vw;
@@ -192,72 +198,10 @@ p span {
   }
 }
 
-.card-container {
-  background-color: rgba(197, 197, 197, 0.18);
-  border-radius: 12px;
-  border: 1px solid #575757;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 0.5em;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.5em;
-}
-
-.card-image-container {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.card-image-container .card-image {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.card-image-container .gradient-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 40%;
-  background: -webkit-gradient(linear, left bottom, left top, from(black), color-stop(50%, rgba(0, 0, 0, 0.8)), to(rgba(0, 0, 0, 0)));
-  background: linear-gradient(to top, black, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0) 100%);
-  pointer-events: none;
-}
-
-.card-image-container .overlay-content {
-  position: absolute;
-  bottom: 24px;
-  left: 10px;
-  color: white;
-  z-index: 1;
-  gap: 0.2em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-.card-image-container .overlay-content h3 {
-  margin: 0;
-  font-size: 1rem;
-}
-
-.card-image-container .overlay-content p span {
-  margin: 0;
-  font-size: 0.875rem;
-  font-weight: 300;
-  color: #a8a4a4;
+@media (max-width: 450px) {
+  .orb {
+    display: none;
+  }
 }
 
 .btn {
@@ -330,38 +274,6 @@ p span {
   }
 }
 
-.card-title-link {
-  text-decoration: none;
-  color: inherit;
-}
-
-.card-title-link:hover, .card-title-link:active, .card-title-link:focus, .card-title-link:visited {
-  text-decoration: none;
-  color: inherit;
-  /* prevents color change */
-}
-
-.card-rating {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  gap: 0.4em;
-}
-
-.card-rating-value {
-  color: white;
-  font-weight: 300;
-  font-size: 0.8rem;
-}
-
-.card-rating-icon {
-  color: #f4ce03;
-}
-
 .section-header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -414,6 +326,8 @@ input::placeholder {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 0.5em;
 }
 

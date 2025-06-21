@@ -16,6 +16,14 @@
   margin-bottom: 1rem;
 }
 
+@media (max-width: 500px) {
+  .section-header {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .section-header h2 {
   font-size: 1rem;
   font-weight: 500;
@@ -23,10 +31,22 @@
   margin: 0;
 }
 
+@media (max-width: 500px) {
+  .section-header h2 {
+    display: none;
+  }
+}
+
 .search-menu-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .search-menu-container {
+    width: 100%;
+  }
 }
 /*# sourceMappingURL=MovieSectionHeader.module.css.map */

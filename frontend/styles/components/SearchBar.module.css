@@ -13,6 +13,12 @@
   cursor: text;
 }
 
+@media (max-width: 500px) {
+  .search-container {
+    width: 100%;
+  }
+}
+
 .search-container:hover {
   border-color: rgba(244, 206, 3, 0.8);
 }

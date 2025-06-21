@@ -22,6 +22,11 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Movie Collection",
   description: "Movie Collection App using Next.js and TypeScript",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+    shortcut: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({
