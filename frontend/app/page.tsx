@@ -10,7 +10,15 @@ import MovieSectionHeader from "@/components/Dashboard/MovieSectionHeader";
 import MovieGridSection from "@/components/Dashboard/MovieGridSection";
 
 export default function Home() {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState<
+    {
+      id: number;
+      name: string;
+      genres: string[];
+      rate: number;
+      movie_key: string;
+    }[]
+  >([]);
   const [query, setQuery] = useState("");
   const [currentGenres, setCurrentGenres] = useState<string[]>([]);
   const [isShown, setIsShown] = useState(false);
@@ -54,7 +62,11 @@ export default function Home() {
     return Array.from(new Set(movies.flatMap((movie) => movie.genres)));
   }, [movies]);
 
-  const handleGenreSelect = (genre) => {
+  interface GenreSelectHandler {
+    (genre: string): void;
+  }
+
+  const handleGenreSelect: GenreSelectHandler = (genre) => {
     console.log("Selected Genre:", genre);
     if (currentGenres.includes(genre)) {
       setCurrentGenres(currentGenres.filter((g) => g !== genre));

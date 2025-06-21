@@ -17,6 +17,8 @@ const MovieDetails = () => {
     name: string;
     rate: number;
     genres?: string[];
+    length?: string; // Add the length property
+    description?: string; // Add the description property
   }
 
   const [movie, setMovie] = useState<Movie | null>(null); // Initialize as null for conditional rendering
@@ -35,7 +37,7 @@ const MovieDetails = () => {
         }
         const data = await response.json();
         setMovie(data);
-      } catch (err) {
+      } catch (err: any) {
         console.error("Error fetching movie details:", err);
         setError(err.message);
       } finally {
@@ -67,7 +69,6 @@ const MovieDetails = () => {
           <main className="content-container">
             <div className={styles.container}>
               <MovieCard
-                id={movie.movie_key}
                 title={movie.name}
                 genres={movie.genres || []}
                 rating={movie.rate}
@@ -79,7 +80,7 @@ const MovieDetails = () => {
                 <h1 className={`${styles["details-title"]}`}>{movie.name}</h1>
 
                 <div className={`${styles["details-genre-container"]}`}>
-                  {movie.genres.map((genre, index) => (
+                  {movie.genres?.map((genre, index) => (
                     <span key={index} className={`${styles["details-genre"]}`}>
                       {genre.charAt(0).toUpperCase() + genre.slice(1)}
                     </span>

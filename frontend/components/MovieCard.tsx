@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 import styles from "../styles/components/MovieCard.module.scss";
 
 interface MovieCardProps {
-  id: number;
+  id?: number;
   title: string;
   genres: string[];
   rating: number;

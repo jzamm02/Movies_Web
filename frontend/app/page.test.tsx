@@ -38,7 +38,7 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.resetAllMocks();
-  delete globalThis.fetch;
+  delete (globalThis as any).fetch;
 });
 
 test("Renders loading spinner initially", () => {
