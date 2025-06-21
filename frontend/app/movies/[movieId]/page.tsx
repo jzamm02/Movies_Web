@@ -11,6 +11,7 @@ import Footer from "@/components/Footer";
 
 const MovieDetails = () => {
   const { movieId } = useParams(); // Get the dynamic ID from the route
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
   interface Movie {
     movie_key: string;
     name: string;
@@ -28,9 +29,7 @@ const MovieDetails = () => {
     const fetchMovie = async () => {
       setLoading(true);
       try {
-        const response = await fetch(
-          `http://localhost:4000/api/movies/${movieId}`
-        );
+        const response = await fetch(`${apiUrl}/api/movies/${movieId}`);
         if (!response.ok) {
           throw new Error("Failed to fetch movie details");
         }

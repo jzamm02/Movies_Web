@@ -23,8 +23,11 @@ const MovieSectionHeader: React.FC<MovieSectionHeaderProps> = ({
   showAllMovies,
 }) => {
   return (
-    <div className={styles["section-header"]}>
-      <h2>SHOWCASE</h2>
+    <section
+      className={styles["section-header"]}
+      aria-label="Movie filter and search section"
+    >
+      <h2 id="showcase-heading">SHOWCASE</h2>
       <AnimatePresence>
         {isShown ? (
           <>
@@ -48,12 +51,16 @@ const MovieSectionHeader: React.FC<MovieSectionHeaderProps> = ({
       </AnimatePresence>
       {isShown ? null : (
         <div className="">
-          <div className="btn btn-shimmer" onClick={showAllMovies}>
+          <div
+            className="btn btn-shimmer"
+            onClick={showAllMovies}
+            aria-label="View all movies"
+          >
             View All
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

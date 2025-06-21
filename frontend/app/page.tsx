@@ -16,9 +16,12 @@ export default function Home() {
   const [isShown, setIsShown] = useState(false);
   const [allowScroll, setAllowScroll] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:4000/api/movies")
+    console.log("Fetching movies from API:", apiUrl);
+
+    fetch(`${apiUrl}/api/movies`)
       .then((response) => response.json())
       .then((data) => setMovies(data))
       .catch((error) => console.error("Error fetching movies:", error))
@@ -69,11 +72,11 @@ export default function Home() {
   return (
     <div className={allowScroll ? "" : "no-scroll"}>
       <ShadowOverlay allowScroll={allowScroll} />
-      <div className="orb" />
-      <Header />
-      <main>
-        <HeroSection />
-        <section>
+      <div className="orb" aria-hidden="true" />
+      <Header aria-label="Site header" />
+      <main role="main" aria-label="Movie browsing main content">
+        <HeroSection aria-label="Hero promotional section" />
+        <section aria-labelledby="movie-section-heade">
           <MovieSectionHeader
             isShown={isShown}
             query={query}
@@ -82,14 +85,24 @@ export default function Home() {
             uniqueGenres={uniqueGenres}
             handleGenreSelect={handleGenreSelect}
             showAllMovies={showAllMovies}
+            aria-label="Movie filter and search section"
           />
           {isLoading ? (
-            <div className="spinner-container">
+            <div
+              className="spinner-container"
+              role="status"
+              aria-live="polite"
+              aria-label="Loading movies"
+            >
               <div className="loader" />
             </div>
           ) : null}
 
-          <div className="genre-container">
+          <div
+            className="genre-container"
+            aria-live="polite"
+            aria-label="Selected genres"
+          >
             {currentGenres.map((genre, index) => (
               <p key={index + genre} className="genre-tag">
                 {genre.charAt(0).toUpperCase() + genre.slice(1)}
@@ -99,10 +112,11 @@ export default function Home() {
           <MovieGridSection
             filteredMovies={filteredMovies}
             isLoading={isLoading}
+            aria-label="Filtered movie list"
           />
         </section>
       </main>
-      {isLoading ? null : <Footer />}
+      {isLoading ? null : <Footer aria-label="Site footer" />}
     </div>
   );
 }

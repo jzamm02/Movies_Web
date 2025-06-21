@@ -45,6 +45,41 @@ header {
   margin: 2rem auto 3rem auto;
 }
 
+.toast-container {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  background: #232321;
+  padding: 0.75rem 1.25rem;
+  color: white;
+  border-radius: 12px;
+  z-index: 1000;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.75rem;
+  -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+          box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+nav button {
+  background-color: transparent;
+  border: none;
+  color: #dde3ea;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  font-weight: 200;
+}
+
+nav button:hover {
+  color: white;
+}
+
+.toast-icon {
+  color: #f4ce03;
+}
+
 h1 {
   font-size: 2rem;
   font-weight: 400;

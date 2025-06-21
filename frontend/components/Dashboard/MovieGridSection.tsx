@@ -17,7 +17,7 @@ const MovieGridSection: React.FC<MovieGridSectionProps> = ({
   isLoading,
 }) => {
   return (
-    <>
+    <section role="region" aria-label="Filtered movie list" aria-live="polite">
       {filteredMovies.length > 0 ? (
         <div className={styles["grid-container"]}>
           {filteredMovies.map((movie, index) => (
@@ -32,11 +32,11 @@ const MovieGridSection: React.FC<MovieGridSectionProps> = ({
           ))}
         </div>
       ) : isLoading ? null : (
-        <div className={styles["not-found-container"]}>
+        <div className={styles["not-found-container"]} role="alert">
           <p className={styles["not-found"]}>No movies found...</p>
         </div>
       )}
-    </>
+    </section>
   );
 };
 

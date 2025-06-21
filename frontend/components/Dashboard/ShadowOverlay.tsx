@@ -11,6 +11,7 @@ const ShadowOverlay = ({ allowScroll }: { allowScroll: boolean }) => {
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="locked-shadow-overlay"
+            aria-hidden="true"
           />
         )}
       </AnimatePresence>
