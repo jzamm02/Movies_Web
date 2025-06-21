@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Star } from "lucide-react";
 import Link from "next/link";
+import { motion } from "motion/react";
 
 interface MovieCardProps {
   id: number;
@@ -22,7 +23,11 @@ const MovieCard: React.FC<MovieCardProps> = ({
 }) => {
   //   console.log(id);
   return (
-    <div className="card-container">
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="card-container"
+    >
       <div className="card-image-container">
         {!individual ? (
           <Link href={`/movies/${id}`}>
@@ -35,7 +40,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
             />
             {!individual ? (
               <>
-                <div className="gradient-overlay"></div>
+                <div className="gradient-overlay" />
                 <div className="overlay-content">
                   <h3>{title}</h3>
                   <p>
@@ -89,7 +94,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
           </div>
         </>
       ) : null}
-    </div>
+    </motion.div>
   );
 };
 

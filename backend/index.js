@@ -7,13 +7,6 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-//   res.header("Access-Control-Allow-Headers", "Content-Type");
-//   next();
-// });
-
 app.get("/api/movies", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM movies");
@@ -80,6 +73,6 @@ app.delete("/api/movies/:id", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port http://localhost:3000");
+app.listen(4000, () => {
+  console.log("Server running on port http://localhost:4000");
 });

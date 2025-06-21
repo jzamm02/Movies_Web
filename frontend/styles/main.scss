@@ -51,7 +51,7 @@ header {
 
 h1 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 400;
   color: $secondary-color;
   text-align: center;
   //   margin-top: 2rem;
@@ -181,7 +181,7 @@ p span {
     left: 10px;
     color: white;
     z-index: 1;
-    font-size: 14px;
+    // font-size: 16px;
     gap: 0.2em;
     display: flex;
     flex-direction: column;
@@ -191,10 +191,10 @@ p span {
       font-size: 1rem;
     }
 
-    p {
+    p span {
       margin: 0;
       font-size: 0.875rem;
-      font-weight: 200;
+      font-weight: 300;
       color: $moviecard-desc-color;
     }
   }

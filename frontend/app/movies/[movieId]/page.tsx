@@ -29,7 +29,7 @@ const MovieDetails = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:3000/api/movies/${movieId}`
+          `http://localhost:4000/api/movies/${movieId}`
         );
         if (!response.ok) {
           throw new Error("Failed to fetch movie details");

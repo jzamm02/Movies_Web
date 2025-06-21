@@ -47,7 +47,7 @@ header {
 
 h1 {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 400;
   color: white;
   text-align: center;
 }
@@ -200,7 +200,6 @@ p span {
   left: 10px;
   color: white;
   z-index: 1;
-  font-size: 14px;
   gap: 0.2em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -216,10 +215,10 @@ p span {
   font-size: 1rem;
 }
 
-.card-image-container .overlay-content p {
+.card-image-container .overlay-content p span {
   margin: 0;
   font-size: 0.875rem;
-  font-weight: 200;
+  font-weight: 300;
   color: #a8a4a4;
 }
 

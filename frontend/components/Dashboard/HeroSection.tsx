@@ -8,6 +8,7 @@ const HeroSection = () => {
         <h1 className={styles["main-header"]}>
           Explore a collection of top movies and classics
         </h1>
+
         <div className={styles["arrow-container"]}>
           <ArrowDown size={44} />
         </div>
