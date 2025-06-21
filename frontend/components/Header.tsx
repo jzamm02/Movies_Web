@@ -46,15 +46,27 @@ const Header = () => {
           <nav aria-label="Primary navigation" className="header-links">
             <button
               onClick={() => showToastMessage("Feature coming soon...")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  showToastMessage("Feature coming soon...");
+                }
+              }}
               type="button"
               aria-label="About page"
+              tabIndex={0}
             >
               About
             </button>
             <button
               onClick={() => showToastMessage("Feature coming soon...")}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  showToastMessage("Feature coming soon...");
+                }
+              }}
               type="button"
               aria-label="Contact page"
+              tabIndex={0}
             >
               Contact
             </button>

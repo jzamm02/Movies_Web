@@ -104,7 +104,7 @@ const MovieDetails = () => {
               </p>
             </div>
             <div className={`${styles["button-container"]}`}>
-              <Link href="/" className="btn ">
+              <Link href="/" className="btn " tabIndex={0}>
                 <div>Back to home</div>
               </Link>
             </div>

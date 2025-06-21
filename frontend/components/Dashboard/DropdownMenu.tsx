@@ -47,7 +47,12 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <div className={styles["dropdown-container"]} ref={dropdownRef}>
-      <div className={styles["dropdown-header"]} onClick={toggleDropdown}>
+      <div
+        className={styles["dropdown-header"]}
+        onClick={toggleDropdown}
+        onKeyDown={toggleDropdown}
+        tabIndex={0}
+      >
         {"Genres"}
         <ChevronDown size={16} className={styles.icon} />
       </div>
@@ -62,6 +67,12 @@ const Dropdown: React.FC<DropdownProps> = ({
                   : styles["dropdown-item-inactive"]
               }
               onClick={() => handleSelect(option)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSelect(option);
+                }
+              }}
+              tabIndex={0}
             >
               {option.charAt(0).toUpperCase() + option.slice(1)}
             </li>

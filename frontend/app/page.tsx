@@ -112,6 +112,7 @@ export default function Home() {
           <MovieGridSection
             filteredMovies={filteredMovies}
             isLoading={isLoading}
+            isShown={isShown}
             aria-label="Filtered movie list"
           />
         </section>

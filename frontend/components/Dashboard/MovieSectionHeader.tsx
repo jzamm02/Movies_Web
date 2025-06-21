@@ -54,7 +54,13 @@ const MovieSectionHeader: React.FC<MovieSectionHeaderProps> = ({
           <div
             className="btn btn-shimmer"
             onClick={showAllMovies}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                showAllMovies();
+              }
+            }}
             aria-label="View all movies"
+            tabIndex={0}
           >
             View All
           </div>

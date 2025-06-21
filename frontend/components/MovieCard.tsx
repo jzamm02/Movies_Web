@@ -11,6 +11,7 @@ interface MovieCardProps {
   rating: number;
   imageUrl: string;
   individual?: boolean;
+  isShown?: boolean;
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({
@@ -20,41 +21,50 @@ const MovieCard: React.FC<MovieCardProps> = ({
   rating,
   imageUrl,
   individual,
+  isShown,
 }) => {
   //   console.log(id);
+  const genreText = genres
+    .map((genre) => genre.charAt(0).toUpperCase() + genre.slice(1))
+    .join(", ");
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className="card-container"
+      aria-label={`Movie card for ${title}`}
+      role="group"
     >
       <div className="card-image-container">
         {!individual ? (
-          <Link href={`/movies/${id}`}>
+          <Link
+            href={`/movies/${id}`}
+            aria-label={`Go to details page for ${title}`}
+          >
             <Image
               src={imageUrl}
               alt={`${title} Poster`}
               width={180}
               height={260}
               className={"card-image"}
+              aria-describedby={`genres-${id} rating-${id}`}
             />
-            {!individual ? (
-              <>
-                <div className="gradient-overlay" />
-                <div className="overlay-content">
-                  <h3>{title}</h3>
-                  <p>
-                    {genres.map((genre, index) => (
-                      <span key={index}>
-                        {genre.charAt(0).toUpperCase() + genre.slice(1)}
 
-                        {index < genres.length - 1 && ", "}
-                      </span>
-                    ))}
-                  </p>
-                </div>
-              </>
-            ) : null}
+            <>
+              <div className="gradient-overlay" aria-hidden="true" />
+              <div className="overlay-content">
+                <h3>{title}</h3>
+                <p id={`genres-${id}`} aria-label={`Genres: ${genreText}`}>
+                  {genres.map((genre, index) => (
+                    <span key={index}>
+                      {genre.charAt(0).toUpperCase() + genre.slice(1)}
+
+                      {index < genres.length - 1 && ", "}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </>
           </Link>
         ) : (
           <>
@@ -64,33 +74,34 @@ const MovieCard: React.FC<MovieCardProps> = ({
               width={180}
               height={260}
               className={"card-image"}
+              aria-describedby={`genres-${id} rating-${id}`}
             />
-            {!individual ? (
-              <>
-                <div className="gradient-overlay"></div>
-                <div className="overlay-content">
-                  <h3>{title}</h3>
-                  <p>
-                    {genres.map((genre, index) => (
-                      <span key={index}>
-                        {genre}
-                        {index < genres.length - 1 && ", "}
-                      </span>
-                    ))}
-                  </p>
-                </div>
-              </>
-            ) : null}
           </>
         )}
       </div>
       {!individual ? (
         <>
-          <div className="btn">Learn More</div>
+          <Link
+            href={`/movies/${id}`}
+            className="card-title-link"
+            tabIndex={isShown ? 0 : undefined}
+          >
+            <div
+              className="btn"
+              role="button"
+              aria-label={`Learn more about ${title}`}
+            >
+              Learn More
+            </div>
+          </Link>
 
-          <div className="card-rating">
+          <div
+            className="card-rating"
+            aria-label={`Rating: ${rating} out of 10`}
+            id={`rating-${id}`}
+          >
             <p className="card-rating-value">{rating}</p>
-            <Star size={16} className="card-rating-icon" />
+            <Star size={16} className="card-rating-icon" aria-hidden />
           </div>
         </>
       ) : null}

@@ -60,6 +60,7 @@ header {
   display: flex;
   gap: 0.75rem;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+  align-items: center;
 }
 
 nav button {
@@ -290,6 +291,18 @@ p span {
   }
   100% {
     left: 125%;
+  }
+}
+.card-title-link {
+  text-decoration: none;
+  color: inherit;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+    color: inherit; /* prevents color change */
   }
 }
 

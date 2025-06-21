@@ -60,6 +60,9 @@ header {
   gap: 0.75rem;
   -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
           box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.6);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 nav button {
@@ -325,6 +328,17 @@ p span {
   100% {
     left: 125%;
   }
+}
+
+.card-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.card-title-link:hover, .card-title-link:active, .card-title-link:focus, .card-title-link:visited {
+  text-decoration: none;
+  color: inherit;
+  /* prevents color change */
 }
 
 .card-rating {

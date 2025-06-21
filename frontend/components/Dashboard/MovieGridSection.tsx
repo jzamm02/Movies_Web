@@ -10,11 +10,13 @@ interface MovieGridSectionProps {
     movie_key: string;
   }[];
   isLoading: boolean;
+  isShown?: boolean;
 }
 
 const MovieGridSection: React.FC<MovieGridSectionProps> = ({
   filteredMovies,
   isLoading,
+  isShown,
 }) => {
   return (
     <section role="region" aria-label="Filtered movie list" aria-live="polite">
@@ -28,6 +30,7 @@ const MovieGridSection: React.FC<MovieGridSectionProps> = ({
               rating={movie.rate}
               imageUrl={`/images/${movie.movie_key}.webp`}
               key={movie.movie_key + index.toString()}
+              isShown={isShown}
             />
           ))}
         </div>
