@@ -3,6 +3,16 @@ import SearchBar from "../SearchBar";
 import Dropdown from "./DropdownMenu";
 import styles from "../../styles/components/MovieSectionHeader.module.scss";
 
+const shakeAnimation = {
+  rotate: [0, -7, 7, -5, 5, -3, 3, 0],
+  transition: {
+    duration: 0.6,
+    ease: "easeOut",
+    repeat: Infinity,
+    repeatDelay: 1.5, // time between shakes in seconds
+  },
+};
+
 interface MovieSectionHeaderProps {
   isShown: boolean;
   query: string;
@@ -50,7 +60,7 @@ const MovieSectionHeader: React.FC<MovieSectionHeaderProps> = ({
         ) : null}
       </AnimatePresence>
       {isShown ? null : (
-        <div>
+        <motion.div animate={shakeAnimation}>
           <div
             className="btn btn-shimmer"
             onClick={showAllMovies}
@@ -64,7 +74,7 @@ const MovieSectionHeader: React.FC<MovieSectionHeaderProps> = ({
           >
             View All
           </div>
-        </div>
+        </motion.div>
       )}
     </section>
   );

@@ -14,3 +14,6 @@ COPY . .
 EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
+
+#CMD ["sh", "-c", "npm run test && npm run test:e2e && npm run dev"]
+
