@@ -1,10 +1,10 @@
 # Movies_WebApp
 
-### Prerequisites
+## Prerequisites
 
 1. Please make sure you have Docker Desktop installed https://www.docker.com/products/docker-desktop/
 
-### Steps to run the application
+## Steps to run the application
 
 1.  Open your terminal and navigate to the project directory:
 
@@ -38,9 +38,9 @@ Then access the app at http://localhost:3001
 
 4. Click on a movie's image or Learn More button to view its detailed page.
 
-### Testing
+## Testing
 
-## Unit Tests (via Jest)
+### Unit Tests (via Jest)
 
 To run Jest tests inside the Docker container, inside movies_web run the following command:
 
