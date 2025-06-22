@@ -49,3 +49,20 @@ To run Jest tests inside the Docker container, inside movies_web run the followi
     docker compose exec frontend npm run test
 
 This will run all unit tests and generate a coverage report.
+
+## Technologies required
+
+- Component-based JS library such as Stencil / VueJS / Next / React (✅ Used Next.js)
+- SCSS (✅)
+- TypeScript(✅)
+- Basic API layer to serve the provided movie library json (Node backend / PHP backend) (✅ Used Node)
+- Automated tests (basic component level tests) (✅ Used Jest)
+- Responsive design (✅)
+
+- #### Extra Credit
+
+- Dockerising your working solution (✅ Dockerised into 3 containers - frontend, backend and db)
+- Serving the data from a database instead of the json file (✅ Used postgres db, loads json data on first build)
+- Mobile-first (✅)
+- Use Application State Management (Redux / VueX) (🚫 Redux would have been overkill for this simple application, however I have experience working with Redux on other projects)
+- Integration level E2E tests (✅ Used Playwright)
