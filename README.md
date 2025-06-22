@@ -28,6 +28,8 @@ If something else is using port 3000, open the docker-compose.yaml file and chan
 
 Then access the app at http://localhost:3001
 
+This also applies to the backend (by default port 4000), and for database (port 5433, already changed from default port 5432)
+
 ### Using the web application:
 
 1. When the homepage loads, click the View All button (animated) to unlock the interface and enable scrolling.
